@@ -10,17 +10,22 @@ import (
 
 type Builder struct {
 	headers
+	uriParams
 }
 
 func NewBuilder() *Builder {
 	return &Builder{}
 }
 
-func (m *Builder) GetContext() (*gin.Context, error) {
+func (b *Builder) GetContext() (*gin.Context, error) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
 	c.Request = &http.Request{URL: &url.URL{}, Header: http.Header{}}
 
-	if err := m.writeHeadersToContext(c); err != nil {
+	if err := b.writeHeadersToContext(c); err != nil {
+		return nil, err
+	}
+
+	if err := b.writeURIParamsToContext(c); err != nil {
 		return nil, err
 	}
 
