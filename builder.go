@@ -11,6 +11,7 @@ import (
 type Builder struct {
 	headers
 	uriParams
+	queries
 }
 
 func NewBuilder() *Builder {
@@ -26,6 +27,10 @@ func (b *Builder) GetContext() (*gin.Context, error) {
 	}
 
 	if err := b.writeURIParamsToContext(c); err != nil {
+		return nil, err
+	}
+
+	if err := b.writeQueriesToContext(c); err != nil {
 		return nil, err
 	}
 
