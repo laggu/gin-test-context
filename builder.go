@@ -19,6 +19,15 @@ func NewBuilder() *Builder {
 	return &Builder{}
 }
 
+func NewTestContext(headers, params, queries, body interface{}) (*gin.Context, error) {
+	b := NewBuilder()
+	b.SetHeaders(headers)
+	b.SetURIParams(params)
+	b.SetQueries(queries)
+	b.SetBody(body)
+	return b.GetContext()
+}
+
 func (b *Builder) GetContext() (*gin.Context, error) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
 	c.Request = &http.Request{URL: &url.URL{}, Header: http.Header{}}
