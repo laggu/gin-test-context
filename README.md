@@ -52,3 +52,39 @@ require.NoError(t, err)
 
 yourHandler(context)
 ```
+
+### URI Params
+
+#### by struct
+```
+header := struct{
+    Foo string `uri:"foo"`
+    Bar string `uri:"bar"`
+}{
+    Foo: "abc",
+    Bar: "xyz",
+}
+
+builder := GinTestContext.NewBuilder()
+builder.SetURIParams(header)
+
+context, err := builder.GetContext()
+require.NoError(t, err)
+
+yourHandler(context)
+```
+
+#### by map
+```
+header := map[string]string
+header["foo"] = "abc"
+header["bar"] = "xyz"
+
+builder := GinTestContext.NewBuilder()
+builder.SetURIParams(header)
+
+context, err := builder.GetContext()
+require.NoError(t, err)
+
+yourHandler(context)
+```
