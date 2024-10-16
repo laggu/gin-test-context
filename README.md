@@ -88,3 +88,39 @@ require.NoError(t, err)
 
 yourHandler(context)
 ```
+
+### Queries
+
+#### by struct
+```
+queries := struct{
+    Foo string `form:"foo"`
+    Bar string `form:"bar"`
+}{
+    Foo: "abc",
+    Bar: "xyz",
+}
+
+builder := GinTestContext.NewBuilder()
+builder.SetQueries(queries)
+
+context, err := builder.GetContext()
+require.NoError(t, err)
+
+yourHandler(context)
+```
+
+#### by map
+```
+queries := map[string]string
+queries["foo"] = "abc"
+queries["bar"] = "xyz"
+
+builder := GinTestContext.NewBuilder()
+builder.SetQueries(queries)
+
+context, err := builder.GetContext()
+require.NoError(t, err)
+
+yourHandler(context)
+```
