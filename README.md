@@ -124,3 +124,39 @@ require.NoError(t, err)
 
 yourHandler(context)
 ```
+
+### Body
+
+#### by struct
+```
+body := struct{
+    Foo string `json:"foo"`
+    Bar string `json:"bar"`
+}{
+    Foo: "abc",
+    Bar: "xyz",
+}
+
+builder := GinTestContext.NewBuilder()
+builder.SetBody(body)
+
+context, err := builder.GetContext()
+require.NoError(t, err)
+
+yourHandler(context)
+```
+
+#### by map
+```
+body := map[string]string
+body["foo"] = "abc"
+body["bar"] = "xyz"
+
+builder := GinTestContext.NewBuilder()
+builder.SetBody(body)
+
+context, err := builder.GetContext()
+require.NoError(t, err)
+
+yourHandler(context)
+```
