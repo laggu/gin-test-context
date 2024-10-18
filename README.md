@@ -57,7 +57,7 @@ yourHandler(context)
 
 #### by struct
 ```
-header := struct{
+params := struct{
     Foo string `uri:"foo"`
     Bar string `uri:"bar"`
 }{
@@ -66,7 +66,7 @@ header := struct{
 }
 
 builder := GinTestContext.NewBuilder()
-builder.SetURIParams(header)
+builder.SetURIParams(params)
 
 context, err := builder.GetContext()
 require.NoError(t, err)
@@ -76,12 +76,12 @@ yourHandler(context)
 
 #### by map
 ```
-header := map[string]string
-header["foo"] = "abc"
-header["bar"] = "xyz"
+params := map[string]string
+params["foo"] = "abc"
+params["bar"] = "xyz"
 
 builder := GinTestContext.NewBuilder()
-builder.SetURIParams(header)
+builder.SetURIParams(paramsß)
 
 context, err := builder.GetContext()
 require.NoError(t, err)
