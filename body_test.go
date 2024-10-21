@@ -1,12 +1,13 @@
-package GinTestContext
+package ginTestContext
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/go-faker/faker/v4"
-	"github.com/stretchr/testify/require"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/gin-gonic/gin"
+	"github.com/go-faker/faker/v4"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_body_SetBody(t *testing.T) {

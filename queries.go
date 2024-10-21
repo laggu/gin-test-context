@@ -1,10 +1,11 @@
-package GinTestContext
+package ginTestContext
 
 import (
 	"errors"
-	"github.com/gin-gonic/gin"
 	"net/url"
 	"reflect"
+
+	"github.com/gin-gonic/gin"
 )
 
 var (

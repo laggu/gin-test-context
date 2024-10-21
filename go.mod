@@ -1,4 +1,4 @@
-module github.com/laggu/GinTestContext
+module github.com/laggu/gin-test-context
 
 go 1.22.2
 

@@ -1,11 +1,12 @@
-package GinTestContext
+package ginTestContext
 
 import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"github.com/gin-gonic/gin"
 	"io/ioutil"
+
+	"github.com/gin-gonic/gin"
 )
 
 var (

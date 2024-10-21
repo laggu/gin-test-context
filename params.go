@@ -1,4 +1,4 @@
-package GinTestContext
+package ginTestContext
 
 import (
 	"errors"
