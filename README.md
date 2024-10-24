@@ -1,13 +1,13 @@
-# GinTestContext
-Test your Gin handler easily!
+# gin-test-context
+Test your gin handler easily!
 
 ## Install
 ```
-go get -u github.com/laggu/GinTestContext
+go get -u github.com/laggu/gin-test-context
 ```
 
 ## Features
-GinTestContext makes gin.Context which is set with various variables you need
+gin-test-context makes gin.Context which is set with various variables you need
 
 ### What you can do
 * setting headers
@@ -29,7 +29,7 @@ header := struct{
     Bar: "xyz",
 }
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetHeaders(header)
 
 context, err := builder.GetContext()
@@ -44,7 +44,7 @@ header := map[string]string
 header["foo"] = "abc"
 header["bar"] = "xyz"
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetHeaders(header)
 
 context, err := builder.GetContext()
@@ -65,7 +65,7 @@ params := struct{
     Bar: "xyz",
 }
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetURIParams(params)
 
 context, err := builder.GetContext()
@@ -80,7 +80,7 @@ params := map[string]string
 params["foo"] = "abc"
 params["bar"] = "xyz"
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetURIParams(paramsß)
 
 context, err := builder.GetContext()
@@ -101,7 +101,7 @@ queries := struct{
     Bar: "xyz",
 }
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetQueries(queries)
 
 context, err := builder.GetContext()
@@ -116,7 +116,7 @@ queries := map[string]string
 queries["foo"] = "abc"
 queries["bar"] = "xyz"
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetQueries(queries)
 
 context, err := builder.GetContext()
@@ -137,7 +137,7 @@ body := struct{
     Bar: "xyz",
 }
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetBody(body)
 
 context, err := builder.GetContext()
@@ -152,7 +152,7 @@ body := map[string]string
 body["foo"] = "abc"
 body["bar"] = "xyz"
 
-builder := GinTestContext.NewBuilder()
+builder := ginTestContext.NewBuilder()
 builder.SetBody(body)
 
 context, err := builder.GetContext()
