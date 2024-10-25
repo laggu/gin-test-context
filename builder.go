@@ -19,15 +19,6 @@ func NewBuilder() *Builder {
 	return &Builder{}
 }
 
-func NewTestContext(headers, params, queries, body interface{}) (*gin.Context, error) {
-	b := NewBuilder()
-	b.SetHeaders(headers)
-	b.SetURIParams(params)
-	b.SetQueries(queries)
-	b.SetBody(body)
-	return b.GetContext()
-}
-
 func (b *Builder) GetContext() (*gin.Context, error) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
 	c.Request = &http.Request{URL: &url.URL{}, Header: http.Header{}}
@@ -49,4 +40,20 @@ func (b *Builder) GetContext() (*gin.Context, error) {
 	}
 
 	return c, nil
+}
+
+type ContextInput struct {
+	Headers   any
+	URIParams any
+	Queries   any
+	Body      any
+}
+
+func NewTestContext(input ContextInput) (*gin.Context, error) {
+	b := NewBuilder()
+	b.SetHeaders(input.Headers)
+	b.SetURIParams(input.URIParams)
+	b.SetQueries(input.Queries)
+	b.SetBody(input.Body)
+	return b.GetContext()
 }
